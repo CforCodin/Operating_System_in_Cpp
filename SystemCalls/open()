@@ -1,0 +1,9 @@
+#include <fcntl.h>
+#include <unistd.h>
+
+int main() {
+    int fd = open("file.txt", O_WRONLY | O_CREAT, 0644);
+    write(fd, "Hello, world!", 13);
+    close(fd);
+    return 0;
+}
