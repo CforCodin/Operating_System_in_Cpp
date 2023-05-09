@@ -1,0 +1,7 @@
+#include <unistd.h>
+
+int main() {
+    char* const argv[] = { "ls", "-l", nullptr };
+    execvp("ls", argv);
+    return 0;
+}
