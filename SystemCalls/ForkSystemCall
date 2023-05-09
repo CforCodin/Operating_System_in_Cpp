@@ -1,0 +1,26 @@
+#include <iostream>
+#include <unistd.h>
+
+using namespace std;
+
+int main() {
+    cout << "Before fork\n";
+    pid_t pid = fork();
+
+    if (pid == 0) {
+        // child process
+        cout << "Child process\n";
+        execlp("/bin/ls", "ls", NULL);
+    } else if (pid > 0) {
+        // parent process
+        cout << "Parent process\n";
+        wait(NULL);
+        cout << "Child process completed\n";
+    } else {
+        // fork failed
+        cerr << "Fork failed\n";
+        return 1;
+    }
+
+    return 0;
+}
