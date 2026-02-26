@@ -1,0 +1,19 @@
+#include <iostream>
+#include <unistd.h>
+using namespace std;
+
+int main() {
+    pid_t pid = fork();
+
+    if(pid < 0) {
+        cout << "Fork Failed\n";
+    }
+    else if(pid == 0) {
+        cout << "Child Process ID: " << getpid() << endl;
+    }
+    else {
+        cout << "Parent Process ID: " << getpid() << endl;
+    }
+
+    return 0;
+}
